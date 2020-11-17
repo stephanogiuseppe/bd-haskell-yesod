@@ -12,7 +12,7 @@ import Import
 formProduto :: Maybe Produto -> Form Produto
 formProduto mp = renderDivs $ Produto
     <$> areq textField (FieldSettings "Nome: "
-                            (Just "nome do produto") 
+                            Nothing
                             (Just "hs1") Nothing
                             [("class", "classe1")]
                         ) (fmap produtoNome mp)
@@ -64,6 +64,8 @@ getListaR = do
                         Nome
                     <th>
                         Preco
+                    <th>
+                    <th>
             <tbody>
                 $forall Entity pid produto <- produtos
                     <tr>
@@ -71,6 +73,12 @@ getListaR = do
                             #{produtoNome produto}
                         <td>
                             #{produtoPreco produto}
+                        <td>
+                            <a href=@{UpdateProdutoR pid}>
+                                Editar
+                        <td>
+                            <form action=@{DeleteProdutoR pid} method=post>
+                                <input type="submit" value="X">
     |]
 
 getUpdateProdutoR :: ProdutoId -> Handler Html
@@ -87,3 +95,9 @@ postUpdateProdutoR pid = do
             _ <- runDB (replace pid novo)
             redirect ListaR
         _ -> redirect HomeR
+
+-- delete from produto where id = pid
+postDeleteProdutoR :: ProdutoId -> Handler Html
+postDeleteProdutoR pid = do
+    runDB $ delete pid
+    redirect ListaR
