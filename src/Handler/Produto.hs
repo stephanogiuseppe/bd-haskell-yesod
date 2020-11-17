@@ -28,4 +28,21 @@ getProdutoR = do
     |]
 
 postProdutoR :: Handler Html
-postProdutoR = undefined
+postProdutoR = do
+    ((res, _), _) <- runFormPost formProduto
+    case res of
+        FormSuccess produto -> do
+            pid <- runDB (insert produto)
+            redirect (DescR pid)
+        _ -> redirect HomeR
+
+-- select * from produto where id - pid
+getDescR :: ProdutoId -> Handler Html
+getDescR pid = do
+    produto <- runDB $ get404 pid
+    defaultLayout [whamlet|
+        <h1>
+            Nome: #{produtoNome produto}
+        <h2>
+            Preço: #{produtoPreco produto}
+    |]

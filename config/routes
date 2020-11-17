@@ -3,5 +3,6 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/        HomeR    GET 
-/produto ProdutoR GET POST
+/                               HomeR       GET 
+/produto                        ProdutoR    GET POST
+/produto/#ProdutoId/descricao   DescR       GET
