@@ -46,3 +46,25 @@ getDescR pid = do
         <h2>
             Preço: #{produtoPreco produto}
     |]
+
+-- select * from produto order by preco desc
+getListaR :: Handler Html
+getListaR = do
+    -- produtos :: [Entity ProdutoId Produto]
+    produtos <- runDB $ selectList [] [Desc ProdutoPreco]
+    defaultLayout [whamlet|
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Nome
+                    <th>
+                        Preco
+            <tbody>
+                $forall Entity pid produto <- produtos
+                    <tr>
+                        <td>
+                            #{produtoNome produto}
+                        <td>
+                            #{produtoPreco produto}
+    |]
