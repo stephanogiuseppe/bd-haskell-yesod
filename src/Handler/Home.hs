@@ -24,4 +24,7 @@ getHomeR = do
                 <li>
                     <a href=@{ProdutoR}>
                         Cadastro de Produtos
+                <li>
+                    <a href=@{ListaR}>
+                        Listagem de Produtos
         |]

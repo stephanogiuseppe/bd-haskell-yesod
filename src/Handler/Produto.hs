@@ -9,27 +9,31 @@ module Handler.Produto where
 import Import
 
 -- gera html das caixax de form text
-formProduto :: Form Produto
-formProduto = renderDivs $ Produto
+formProduto :: Maybe Produto -> Form Produto
+formProduto mp = renderDivs $ Produto
     <$> areq textField (FieldSettings "Nome: "
                             (Just "nome do produto") 
                             (Just "hs1") Nothing
                             [("class", "classe1")]
-                        ) Nothing
-    <*> areq doubleField "Preço: " Nothing
+                        ) (fmap produtoNome mp)
+    <*> areq doubleField "Preço: " (fmap produtoPreco mp)
 
-getProdutoR :: Handler Html
-getProdutoR = do
-    (widget, _) <- generateFormPost formProduto
+auxProduto :: Route App -> Maybe Produto -> Handler Html
+auxProduto rt mp = do
+    (widget, _) <- generateFormPost (formProduto mp)
     defaultLayout [whamlet|
-        <form action=@{ProdutoR} method=post>
+        <form action=@{rt} method=post>
             ^{widget}
             <input type="submit" value="Cadastrar">
     |]
 
+getProdutoR :: Handler Html
+getProdutoR = auxProduto ProdutoR Nothing
+    
+
 postProdutoR :: Handler Html
 postProdutoR = do
-    ((res, _), _) <- runFormPost formProduto
+    ((res, _), _) <- runFormPost (formProduto Nothing)
     case res of
         FormSuccess produto -> do
             pid <- runDB (insert produto)
@@ -68,3 +72,18 @@ getListaR = do
                         <td>
                             #{produtoPreco produto}
     |]
+
+getUpdateProdutoR :: ProdutoId -> Handler Html
+getUpdateProdutoR pid = do
+    antigo <- runDB $ get404 pid
+    auxProduto (UpdateProdutoR pid) (Just antigo)
+
+-- update from produto where id = pid set ...
+postUpdateProdutoR :: ProdutoId -> Handler Html
+postUpdateProdutoR pid = do
+    ((res, _), _) <- runFormPost (formProduto Nothing)
+    case res of
+        FormSuccess novo -> do
+            _ <- runDB (replace pid novo)
+            redirect ListaR
+        _ -> redirect HomeR
