@@ -1,0 +1,40 @@
+/home/stephano/projects/bd-haskell-yesod/aulahaskell.cabal:
+  hash: a166a57f651fea6ebc2cc50384415c002c7ad34059335b4bc414f9a5e651bf6f
+/home/stephano/projects/bd-haskell-yesod/package.yaml:
+  hash: e6fbfaa68eba2efeed908c965de64fd88d0bbdef43c4d5c7fccb4e85c2818ba5
+/home/stephano/projects/bd-haskell-yesod/src/Settings.hs:
+  hash: ded88c52cc9077a13ed9839cc65d5668dc56c5de9b7991d35604d819cfd17cd8
+/home/stephano/projects/bd-haskell-yesod/config/routes:
+  hash: 118329527c1cfc878684d76e88b8bab687591aef0298308f953b8ba897519a38
+/home/stephano/projects/bd-haskell-yesod/.stack-work/dist/x86_64-linux-tinfo6/Cabal-3.0.1.0/build/autogen/Paths_aulahaskell.hs:
+  hash: 47fa3882802d725ae1814a5639f10410dacc475633561bf1129ee895448fab2e
+/home/stephano/projects/bd-haskell-yesod/src/Model.hs:
+  hash: ebe1acf26accd87569f629514d8461ae8daddc839a6a5da6d012101cc66bcccb
+/home/stephano/projects/bd-haskell-yesod/src/Application.hs:
+  hash: bda33d0dedc2b7f3d76f3c0f71795859c333c1b2475dbc6e8c60664dcb9e6fb2
+/home/stephano/projects/bd-haskell-yesod/src/Handler/Common.hs:
+  hash: 95a811532352cbad27bcb239d6b729fed51f85c1632e0458a82da68732c8ef47
+/home/stephano/projects/bd-haskell-yesod/config/favicon.ico:
+  hash: 26f64af57709ca371fe68e50a5d915661e4aa017748983906d57d00f7fc3f748
+/home/stephano/projects/bd-haskell-yesod/src/Foundation.hs:
+  hash: 4d18885e29d3d75a9a4f30d9bf7ab44ad2799d83e34d2194a05c34922731bc2d
+/home/stephano/projects/bd-haskell-yesod/.stack-work/dist/x86_64-linux-tinfo6/Cabal-3.0.1.0/build/autogen/cabal_macros.h:
+  hash: 044863d076a107f4d853117df497f18cc3411e4e30ecb56f4bf7300bc18ab8bf
+/home/stephano/projects/bd-haskell-yesod/config/settings.yml:
+  hash: 11caaf8fbaf89337c866714643f13357f28965f371ebace859bcbb76ab723df8
+/usr/include/stdc-predef.h:
+  hash: 64fdf694f7b3d51ec6c45c06dcb71ebbe9455742d3ea673012016668853d3bff
+/home/stephano/projects/bd-haskell-yesod/src/Import.hs:
+  hash: cbb5e147e8b0d300e678aeed69fd48c040286f33c1bf98267eef11171943de55
+/home/stephano/projects/bd-haskell-yesod/src/Handler/Home.hs:
+  hash: 6d7db1e07b0fc3ecf67f3add53c5360be734c362f8592d1b02b3a805cee02a53
+/home/stephano/projects/bd-haskell-yesod/src/Import/NoFoundation.hs:
+  hash: 0ea0cd195d52cc53173482ef8bc283aacafe06895e4b4a87b8c58e7d52308663
+/home/stephano/projects/bd-haskell-yesod/src/Settings/StaticFiles.hs:
+  hash: 0afdb84a9dbe874f41986518915d649ee4034374b74da113af679766da3264f8
+/home/stephano/.stack/programs/x86_64-linux/ghc-tinfo6-8.8.4/lib/ghc-8.8.4/include/ghcversion.h:
+  hash: 297e8571427d670d413977834f5cdfc77cb89051d2f5b8302303c442346d15d0
+/home/stephano/projects/bd-haskell-yesod/config/models:
+  hash: 1298d6027c7ca1639599712e9064f6878e6056656eb5ad4e5ec45f2e8af580d0
+/home/stephano/projects/bd-haskell-yesod/config/robots.txt:
+  hash: 7e28fc38624619b8f8046d91f5085e8565055d0feb27af2ebb8df20b9f6f5060

@@ -1,0 +1,16 @@
+/home/stephano/projects/bd-haskell-yesod/app/DevelMain.hs:
+  hash: bce268c67efda0653114f18b962d1c6c59cd0d9c150c40e65d75972681150ef9
+/home/stephano/projects/bd-haskell-yesod/aulahaskell.cabal:
+  hash: a166a57f651fea6ebc2cc50384415c002c7ad34059335b4bc414f9a5e651bf6f
+? /home/stephano/projects/bd-haskell-yesod/.stack-work/dist/x86_64-linux-tinfo6/Cabal-3.0.1.0/build/aulahaskell/autogen/Paths_aulahaskell.hs
+: hash: 7906c098933a3a111e0d513234d69987c4f2ead9515b8e97d1fde6af0467410e
+/home/stephano/projects/bd-haskell-yesod/package.yaml:
+  hash: e6fbfaa68eba2efeed908c965de64fd88d0bbdef43c4d5c7fccb4e85c2818ba5
+? /home/stephano/projects/bd-haskell-yesod/.stack-work/dist/x86_64-linux-tinfo6/Cabal-3.0.1.0/build/aulahaskell/autogen/cabal_macros.h
+: hash: 69c46c82172a2386b29827d5e0556743f808a3c1bd83d8b213aef519aa9b93f1
+/usr/include/stdc-predef.h:
+  hash: 64fdf694f7b3d51ec6c45c06dcb71ebbe9455742d3ea673012016668853d3bff
+/home/stephano/projects/bd-haskell-yesod/app/main.hs:
+  hash: 7a0db907dc5c7ee07e55335d9abf35ee4d4031987933b33c1a9eb71ae6e7220b
+/home/stephano/.stack/programs/x86_64-linux/ghc-tinfo6-8.8.4/lib/ghc-8.8.4/include/ghcversion.h:
+  hash: 297e8571427d670d413977834f5cdfc77cb89051d2f5b8302303c442346d15d0
