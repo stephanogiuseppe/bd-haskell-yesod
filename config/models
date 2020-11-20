@@ -2,3 +2,15 @@ Produto
     nome     Text
     preco    Double 
     deriving Show
+
+Usuario
+    nome Text
+    email Text
+    senha Text
+    UniqueEmail email
+    deriving Show
+
+Compra
+    usuarioid UsuarioId
+    produtoid ProdutoId
+    qtunit    Int

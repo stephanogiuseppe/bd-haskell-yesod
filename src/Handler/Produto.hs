@@ -7,6 +7,7 @@
 module Handler.Produto where
 
 import Import
+import Tools
 
 -- gera html das caixax de form text
 formProduto :: Maybe Produto -> Form Produto
@@ -44,11 +45,16 @@ postProdutoR = do
 getDescR :: ProdutoId -> Handler Html
 getDescR pid = do
     produto <- runDB $ get404 pid
+    (widget, _) <- generateFormPost formQt
     defaultLayout [whamlet|
         <h1>
             Nome: #{produtoNome produto}
         <h2>
             Preço: #{produtoPreco produto}
+        
+        <form action=@{CompraR pid} method=post>
+            ^{widget}
+            <input type="submit" value="Adicionar ao carrinho">
     |]
 
 -- select * from produto order by preco desc
@@ -70,7 +76,8 @@ getListaR = do
                 $forall Entity pid produto <- produtos
                     <tr>
                         <td>
-                            #{produtoNome produto}
+                            <a href=@{DescR pid}>
+                                #{produtoNome produto}
                         <td>
                             #{produtoPreco produto}
                         <td>

@@ -4,8 +4,16 @@
 /robots.txt RobotsR GET
 
 /                               HomeR               GET 
-/produto                        ProdutoR            GET POST
+/produto                        ProdutoR            GET     POST
 /produto/#ProdutoId/descricao   DescR               GET
 /produtos                       ListaR              GET
-/produto/#ProdutoId/modificar   UpdateProdutoR      GET POST
-/produto/#ProdutoId/delelete    DeleteProdutoR      POST
+/produto/#ProdutoId/modificar   UpdateProdutoR      GET     POST
+/produto/#ProdutoId/delelete    DeleteProdutoR              POST
+
+/usuario                        UsuarioR            GET     POST
+/entrar                         EntrarR             GET     POST
+/sair                           SairR                       POST
+/admin                          AdminR              GET
+
+/comprar/lista                  ListCompraR         GET
+/comprar/#ProdutoId/efetuar     CompraR                     POST
