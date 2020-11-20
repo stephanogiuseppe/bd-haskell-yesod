@@ -10,7 +10,7 @@ import Import
 --import Network.HTTP.Types.Status
 
 formLogin :: Form (Text, Text)
-formLogin = renderBootstrap $ (,)
+formLogin = renderBootstrap2 $ (,)
     <$> areq emailField "E-mail: " Nothing
     <*> areq passwordField "Senha: " Nothing
 

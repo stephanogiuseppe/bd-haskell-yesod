@@ -49,6 +49,6 @@ postCompraR pid = do
                     case usuario of
                         Nothing -> redirect HomeR
                         Just (Entity uid _) -> do
-                            runDB $ insert (Compra uid pid qt)
+                            _ <- runDB $ insert (Compra uid pid qt)
                             redirect ListCompraR
         _ -> redirect HomeR

@@ -1,4 +1,4 @@
-name:    aulahaskell
+name:    matchdayfcsantos
 version: "0.0.0"
 
 dependencies:
@@ -67,7 +67,7 @@ library:
 
 # Runnable executable for our application
 executables:
-  aulahaskell:
+  matchdayfcsantos:
     main: main.hs
     source-dirs: app
     ghc-options:
@@ -75,7 +75,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - aulahaskell
+    - matchdayfcsantos
     when:
     - condition: flag(library-only)
       buildable: false

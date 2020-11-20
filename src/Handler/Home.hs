@@ -7,7 +7,6 @@
 module Handler.Home where
 
 import Import
---import Network.HTTP.Types.Status
 
 -- <img src=@{staticR img_big_pot_witch_class_jpg}>
 getHomeR :: Handler Html

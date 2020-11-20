@@ -15,8 +15,8 @@ stanzas:
     #
     # The path given is for Stack projects. If you're still using cabal, change
     # to
-    # exec: ../dist/build/aulahaskell/aulahaskell
-    exec: ../dist/bin/aulahaskell
+    # exec: ../dist/build/matchdayfcsantos/matchdayfcsantos
+    exec: ../dist/bin/matchdayfcsantos
 
     # Command line options passed to your application.
     args: []
@@ -25,7 +25,7 @@ stanzas:
       # You can specify one or more hostnames for your application to respond
       # to. The primary hostname will be used for generating your application
       # root.
-      - www.aulahaskell.com
+      - www.matchdayfcsantos.com
 
     # Enable to force Keter to redirect to https
     # Can be added to any stanza
@@ -34,7 +34,7 @@ stanzas:
   # Static files.
   - type: static-files
     hosts:
-      - static.aulahaskell.com
+      - static.matchdayfcsantos.com
     root: ../static
 
     # Uncomment to turn on directory listings.
@@ -44,9 +44,9 @@ stanzas:
   - type: redirect
 
     hosts:
-      - aulahaskell.com
+      - matchdayfcsantos.com
     actions:
-      - host: www.aulahaskell.com
+      - host: www.matchdayfcsantos.com
         # secure: false
         # port: 80
 
