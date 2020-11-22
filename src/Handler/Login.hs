@@ -44,8 +44,8 @@ postEntrarR = do
            case usuario of
                 Nothing -> do
                     setMessage [shamlet|
-                        <div>
-                            E-mail N ENCONTRADO!
+                        <div class="alert alert-danger">
+                            E-mail não encontrado
                     |]
                     redirect EntrarR
                 Just (Entity _ usu) -> do 
@@ -55,8 +55,8 @@ postEntrarR = do
                         redirect HomeR
                     else do 
                         setMessage [shamlet|
-                            <div>
-                                Senha INCORRETA!
+                            <div class="alert alert-danger">
+                                Senha incorreta
                         |]
                         redirect EntrarR 
         _ -> redirect HomeR
