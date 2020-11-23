@@ -17,3 +17,11 @@
 
 /comprar/lista                  ListCompraR         GET
 /comprar/#ProdutoId/efetuar     CompraR                     POST
+
+/jogadores                      PlayersR            GET
+/jogador                        PlayerR             GET     POST
+/jogadores/#PlayerId/descricao  PlayerDescR         GET
+/jogadores/#PlayerId/modify     PlayerEditR         GET     POST
+/jogadores/#PlayerId/delete     PlayerDeleteR               POST
+
+/jogadores/#PlayerId/upload     UploadImageR        GET     POST

@@ -14,3 +14,11 @@ Compra
     usuarioid UsuarioId
     produtoid ProdutoId
     qtunit    Int
+
+Player
+    name                Text
+    year                Day
+    position            Text
+    number              Int
+    description         Text
+    deriving            Show
