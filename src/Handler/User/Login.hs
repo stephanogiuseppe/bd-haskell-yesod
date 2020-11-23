@@ -18,21 +18,28 @@ getEntrarR :: Handler Html
 getEntrarR = do 
     (widget,_) <- generateFormPost formLogin
     msg <- getMessage
-    defaultLayout $ 
+    sess <- lookupSession "_EMAIL"
+    defaultLayout $ do
+        addStylesheet (StaticR css_bootstrap_css)
+        addStylesheet (StaticR css_common_css)
+        addStylesheet (StaticR css_login_css)
+        $(whamletFile "templates/navbar.hamlet")
         [whamlet|
-            $maybe mensa <- msg 
-                <div>
-                    ^{mensa}
-            
-            <h1>
-                ENTRAR
-            
-            <form method=post action=@{EntrarR}>
-                ^{widget}
-                <input type="submit" value="Entrar">
-            
-            <a href=@{UserR}>
-                Quero me cadastrar
+            <main>
+                <div class="login-container">
+                    $maybe mensa <- msg 
+                        <div>
+                            ^{mensa}
+                    
+                    <h1>
+                        Entrar
+                    
+                    <form method=post action=@{EntrarR}>
+                        ^{widget}
+                        <input type="submit" value="Entrar" class="btn btn-dark mt-3">
+                    
+                    <a href=@{UserR} class="mt-3">
+                        Quero me cadastrar
         |]
 
 postEntrarR :: Handler Html

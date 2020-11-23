@@ -21,8 +21,13 @@ getUserR :: Handler Html
 getUserR = do 
     (widget, _) <- generateFormPost formUsu
     msg <- getMessage
-    defaultLayout $ do 
+    sess <- lookupSession "_EMAIL"
+    defaultLayout $ do
+        addStylesheet (StaticR css_bootstrap_css)
+        addStylesheet (StaticR css_common_css)
+        addStylesheet (StaticR css_login_css)
         toWidgetHead $(luciusFile "templates/form.lucius")
+        $(whamletFile "templates/navbar.hamlet")
         $(whamletFile "templates/form.hamlet")
 
 postUserR :: Handler Html

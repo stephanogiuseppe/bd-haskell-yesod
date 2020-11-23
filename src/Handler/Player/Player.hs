@@ -7,10 +7,6 @@
 module Handler.Player.Player where
 
 import Import
-import Tools
-import Text.Lucius
-import Text.Julius
-import Database.Persist.Sql (fromSqlKey)
 
 -- Render Player Form
 getPlayerR :: Handler Html
@@ -27,12 +23,21 @@ postPlayerR = do
 
 renderPlayerForm :: Route App -> Maybe Player -> Handler Html
 renderPlayerForm rt mp = do
+    sess <- lookupSession "_EMAIL"
     (widget, _) <- generateFormPost (formPlayer mp)
-    defaultLayout [whamlet|
-        <form action=@{rt} method=post>
-            ^{widget}
-            <input type="submit" value="Salvar">
-    |]
+    defaultLayout $ do
+        addStylesheet (StaticR css_bootstrap_css)
+        addStylesheet (StaticR css_common_css)
+        $(whamletFile "templates/navbar.hamlet")
+        [whamlet|
+            <main>
+                <div>
+                    <h1>
+                        Cadasto de Jogador
+                    <form action=@{rt} method=post>
+                        ^{widget}
+                        <input type="submit" value="Salvar">
+        |]
 
 formPlayer :: Maybe Player -> Form Player
 formPlayer player = renderBootstrap $ Player
@@ -61,12 +66,19 @@ postPlayerEditR pid = do
 getPlayerDescR :: PlayerId -> Handler Html
 getPlayerDescR pid = do
     player <- runDB $ get404 pid
-    defaultLayout [whamlet|
-        <h1>
-            Nome: #{playerName player}
-        <h2>
-            Posição: #{playerPosition player}
-    |]
+    sess <- lookupSession "_EMAIL"
+    defaultLayout $ do
+        addStylesheet (StaticR css_bootstrap_css)
+        addStylesheet (StaticR css_common_css)
+        $(whamletFile "templates/navbar.hamlet")
+        [whamlet|
+            <main>
+                <div>
+                    <h1>
+                        Nome: #{playerName player}
+                    <h2>
+                        Posição: #{playerPosition player}
+        |]
 
 -- Delete Player
 postPlayerDeleteR :: PlayerId -> Handler Html
