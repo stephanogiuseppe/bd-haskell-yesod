@@ -52,50 +52,7 @@ getPlayersR = do
         addStylesheet (StaticR css_common_css)
         addStylesheet (StaticR css_home_css)
         $(whamletFile "templates/navbar.hamlet")
-        [whamlet|
-            <main>
-                <div>
-                    <a class="nav-link" href=@{PlayerR}>
-                        Adicionar Jogador
-                    
-                <div>
-                    <table class="table table-striped">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>
-                                    Número
-                                <th>
-                                    Nome
-                                <th>
-                                    Posição
-                                <th>
-                                    Nascimento
-                                <th>
-                                    Detalhes
-                                <th>
-                                <th>
-                        <tbody>
-                            $forall Entity pid player <- players
-                                <tr>
-                                    <td>
-                                        #{playerNumber player}
-                                    <td>
-                                        <a href=@{PlayerEditR pid}>
-                                            #{playerName player}
-                                    <td>
-                                        #{playerPosition player}
-                                    <td>
-                                        #{show $ playerYear player}
-                                    <td>
-                                        <a href=@{PlayerDescR pid}>
-                                            Descrição
-                                    <td>
-                                        <a href=@{PlayerEditR pid}>
-                                            Editar
-                                    <td>
-                                        <form action=@{PlayerDeleteR pid} method=post>
-                                            <input type="submit" value="X">
-    |]
+        $(whamletFile "templates/player/players.hamlet")
 
 -- Edit Player
 getPlayerEditR :: PlayerId -> Handler Html
