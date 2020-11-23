@@ -10,7 +10,7 @@
 /produto/#ProdutoId/modificar   UpdateProdutoR      GET     POST
 /produto/#ProdutoId/delelete    DeleteProdutoR              POST
 
-/usuario                        UsuarioR            GET     POST
+/usuario                        UserR               GET     POST
 /entrar                         EntrarR             GET     POST
 /sair                           SairR                       POST
 /admin                          AdminR              GET

@@ -29,9 +29,9 @@ instance Yesod App where
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized EntrarR _ = return Authorized
-    isAuthorized UsuarioR _ = return Authorized
+    isAuthorized UserR _ = return Authorized
     isAuthorized AdminR _ = isAdmin
-    isAuthorized _ _ = isUsuario
+    isAuthorized _ _ = isUser
 
 isAdmin :: Handler AuthResult
 isAdmin = do 
@@ -39,10 +39,10 @@ isAdmin = do
     case sess of 
         Nothing -> return AuthenticationRequired
         Just "admin" -> return Authorized
-        Just _ -> return $ Unauthorized "VC EH USUARIO COMUM"
+        Just _ -> return $ Unauthorized "Usuário Comum"
 
-isUsuario :: Handler AuthResult
-isUsuario = do 
+isUser :: Handler AuthResult
+isUser = do 
     sess <- lookupSession "_EMAIL"
     case sess of 
         Nothing -> return AuthenticationRequired

@@ -3,7 +3,7 @@ Produto
     preco    Double 
     deriving Show
 
-Usuario
+User
     nome Text
     email Text
     senha Text
@@ -11,7 +11,7 @@ Usuario
     deriving Show
 
 Compra
-    usuarioid UsuarioId
+    userid UserId
     produtoid ProdutoId
     qtunit    Int
 

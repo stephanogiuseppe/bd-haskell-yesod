@@ -3,8 +3,8 @@ $maybe mensa <- msg
         ^{mensa}
 
 <h1>
-    CADASTRO DE Usuario
+    Cadastro de usuário
     
-<form method=post action=@{UsuarioR}>
+<form method=post action=@{UserR}>
     ^{widget}
     <input type="submit" value="Cadastrar">

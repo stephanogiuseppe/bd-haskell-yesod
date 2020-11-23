@@ -4,7 +4,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Handler.Login where
+module Handler.User.Login where
 
 import Import
 --import Network.HTTP.Types.Status
@@ -30,6 +30,9 @@ getEntrarR = do
             <form method=post action=@{EntrarR}>
                 ^{widget}
                 <input type="submit" value="Entrar">
+            
+            <a href=@{UserR}>
+                Quero me cadastrar
         |]
 
 postEntrarR :: Handler Html
@@ -40,8 +43,8 @@ postEntrarR = do
             setSession "_EMAIL" "root@root.com"
             redirect AdminR
         FormSuccess (email, senha) -> do 
-           usuario <- runDB $ getBy (UniqueEmail email) -- select * from usuario where email=digitado.email
-           case usuario of
+           user <- runDB $ getBy (UniqueEmail email) -- select * from user where email=digitado.email
+           case user of
                 Nothing -> do
                     setMessage [shamlet|
                         <div class="alert alert-danger">
@@ -49,9 +52,9 @@ postEntrarR = do
                     |]
                     redirect EntrarR
                 Just (Entity _ usu) -> do 
-                    if (usuarioSenha usu == senha) then do
+                    if (userSenha usu == senha) then do
                         -- lembra de quem está logado
-                        setSession "_EMAIL" (usuarioNome usu) -- (show uid) -- (usuarioNome usu)
+                        setSession "_EMAIL" (userNome usu) -- (show uid) -- (userNome usu)
                         redirect HomeR
                     else do 
                         setMessage [shamlet|

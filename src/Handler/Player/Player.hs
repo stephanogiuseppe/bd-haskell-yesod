@@ -4,7 +4,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Handler.Player where
+module Handler.Player.Player where
 
 import Import
 import Tools
@@ -12,7 +12,7 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql (fromSqlKey)
 
---Player
+-- Render Player Form
 getPlayerR :: Handler Html
 getPlayerR = renderPlayerForm PlayerR Nothing
 
@@ -41,18 +41,6 @@ formPlayer player = renderBootstrap $ Player
     <*> areq textField "Posição: " (fmap playerPosition player)
     <*> areq intField "Número: " (fmap playerNumber player)
     <*> areq textField "Descrição: " (fmap playerDescription player)
-
--- Players
-getPlayersR :: Handler Html
-getPlayersR = do
-    players <- runDB $ selectList [] [Asc PlayerNumber]
-    defaultLayout $ do
-        sess <- lookupSession "_EMAIL"
-        addStylesheet (StaticR css_bootstrap_css)
-        addStylesheet (StaticR css_common_css)
-        addStylesheet (StaticR css_home_css)
-        $(whamletFile "templates/navbar.hamlet")
-        $(whamletFile "templates/player/players.hamlet")
 
 -- Edit Player
 getPlayerEditR :: PlayerId -> Handler Html
@@ -85,35 +73,3 @@ postPlayerDeleteR :: PlayerId -> Handler Html
 postPlayerDeleteR pid = do
     runDB $ delete pid
     redirect PlayersR
-
-
-
--- @TODO
--- Upload files (image)
-player :: PlayerId -> FilePath
-player playerId = "files/players/" </> (show . fromSqlKey $ playerId)
-
-postUploadImageR :: PlayerId -> Handler Html
-postUploadImageR = getUploadImageR
-
-getUploadImageR :: PlayerId -> Handler Html
-getUploadImageR playerId = do
-    ((res, campos), enctype) <- runFormPost . renderDivs $
-        areq fileField "Foto:" Nothing
-    case res of
-        FormSuccess fileRes -> do
-            liftIO $ fileMove fileRes (player playerId)
-            redirect $ PlayerDescR playerId
-        FormFailure erros -> do
-            setMessage
-                [shamlet| $forall e <- erros
-                    <p>Ocorreu um erro: #{e}
-                |]
-            redirect $ UploadImageR playerId
-        FormMissing ->
-            defaultLayout [whamlet|
-                <form action=@{UploadImageR playerId} method="POST" enctype=#{enctype}>
-                    ^{campos}
-                    <button>
-                        Enviar
-            |]

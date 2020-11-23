@@ -19,16 +19,16 @@ getListCompraR = do
             usu <- runDB $ getBy (UniqueEmail email)
             case usu of
                 Nothing -> redirect HomeR
-                Just (Entity uid usuario) -> do
-                    let sql = "SELECT ??,??,?? FROM usuario \
-                        \ INNER JOIN compra ON compra.usuarioid = usuario.id \
+                Just (Entity uid user) -> do
+                    let sql = "SELECT ??,??,?? FROM user \
+                        \ INNER JOIN compra ON compra.userid = user.id \
                         \ INNER JOIN produto ON compra.produtoid = produto.id \
-                        \ WHERE usuario.id = ?"
-                    produtos <- runDB $ rawSql sql [toPersistValue uid] :: Handler [(Entity Usuario, Entity Compra, Entity Produto)]
+                        \ WHERE user.id = ?"
+                    produtos <- runDB $ rawSql sql [toPersistValue uid] :: Handler [(Entity User, Entity Compra, Entity Produto)]
                     defaultLayout $ do
                         [whamlet|
                             <h1>
-                                COMPRAS de #{usuarioNome usuario}
+                                COMPRAS de #{userNome user}
 
                             <ul>
                                 $forall (Entity _ _, Entity _ compra, Entity _ produto) <- produtos
@@ -45,8 +45,8 @@ postCompraR pid = do
             case sess of
                 Nothing -> redirect HomeR
                 Just email -> do
-                    usuario <- runDB $ getBy (UniqueEmail email)
-                    case usuario of
+                    user <- runDB $ getBy (UniqueEmail email)
+                    case user of
                         Nothing -> redirect HomeR
                         Just (Entity uid _) -> do
                             _ <- runDB $ insert (Compra uid pid qt)
