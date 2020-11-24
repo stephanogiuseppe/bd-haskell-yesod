@@ -43,3 +43,13 @@ main {
     max-width: 1000px;
     margin: auto;
 }
+
+.santos-title {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+td.icon-action {
+    width: 50px;
+}

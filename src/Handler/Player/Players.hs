@@ -7,7 +7,6 @@
 module Handler.Player.Players where
 
 import Import
-import Tools
 
 getPlayersR :: Handler Html
 getPlayersR = do

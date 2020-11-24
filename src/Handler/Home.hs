@@ -18,17 +18,19 @@ getHomeR = do
         $(whamletFile "templates/navbar.hamlet")
         [whamlet|
             <main>
-                <section>
+                <section class="d-flex">
                     <div>
-                        <img src=@{StaticR img_santos_fc_png} alt="Santos Futebol Clube" class="">
-                    <div>
-                        <div>
+                        <img src=@{StaticR img_santos_fc_png} alt="Santos Futebol Clube" class="santosfc">
+                    
+                    <div class="section-right">
+                        <h1 class="santos-title">
                             Santos Futebol Clube
-                        <div>
+                        
+                        <h2>
                             Match Day
                 <section>
                     <aside>
                         Jogadores
                     <aside>
-                        Jogos
+                        Partidas
         |]

@@ -31,12 +31,17 @@ renderPlayerForm rt mp = do
         $(whamletFile "templates/navbar.hamlet")
         [whamlet|
             <main>
-                <div>
+                <div class="santos-title">
                     <h1>
                         Cadasto de Jogador
+                    
+                <div>
                     <form action=@{rt} method=post>
                         ^{widget}
-                        <input type="submit" value="Salvar">
+                        <input type="submit" value="Salvar" class="btn btn-success mt-3">
+
+                    <a href=@{PlayersR} class="btn btn-info mt-3">
+                        Voltar
         |]
 
 formPlayer :: Maybe Player -> Form Player
@@ -73,11 +78,16 @@ getPlayerDescR pid = do
         $(whamletFile "templates/navbar.hamlet")
         [whamlet|
             <main>
+                <div class="santos-title">
+                    <div>
+                        <h1>
+                            Nome: #{playerName player}
+                        <h2>
+                            Posição: #{playerPosition player}
+                
                 <div>
-                    <h1>
-                        Nome: #{playerName player}
-                    <h2>
-                        Posição: #{playerPosition player}
+                    <a href=@{PlayersR} class="btn btn-info mt-3">
+                        Voltar
         |]
 
 -- Delete Player
