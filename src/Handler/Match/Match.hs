@@ -51,10 +51,11 @@ formMatch match = renderBootstrap $ Match
     <$> areq textField "Rival: " (fmap matchRival match)
     <*> areq textField "Campeonato: " (fmap matchLeague match)
     <*> areq dayField "Data do jogo: " (fmap matchDate match)
-    <*> areq textField "Descrição: " (fmap matchDescription match)
-    <*> areq intField "Gols do Santos: " (fmap matchGoalsHome match)
-    <*> areq intField "Gols do rival: " (fmap matchGoalsAway match)
-    <*> areq (selectField getAllPlayers) "Melhor Jogador: " (fmap matchBestPlayer match)
+    <*> areq textField "Local da partida: " (fmap matchPlace match)
+    <*> aopt textField "Descrição: " (fmap matchDescription match)
+    <*> aopt intField "Gols do Santos: " (fmap matchGoalsSantos match)
+    <*> aopt intField "Gols do rival: " (fmap matchGoalsAway match)
+    <*> aopt (selectField getAllPlayers) "Melhor Jogador: " (fmap matchBestPlayer match)
 
 
 

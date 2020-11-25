@@ -17,8 +17,9 @@ Match
     rival           Text
     league          Text
     date            Day
+    place           Text
     description     Text
-    goalsHome       Int
+    goalsSantos     Int
     goalsAway       Int
     bestPlayer      PlayerId
     deriving        Show

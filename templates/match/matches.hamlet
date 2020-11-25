@@ -18,7 +18,7 @@
                     <th>
                         Rival
                     <th>
-                        Descrição
+                        Local
                     <th>
                         Resultado
                     <th>
@@ -39,10 +39,10 @@
                             #{matchRival match}
 
                         <td class="align-middle">
-                            #{matchDescription match}
+                            #{matchPlace match}
 
                         <td class="align-middle">
-                            #{matchGoalsHome match} x #{matchGoalsAway match}
+                            #{matchGoalsSantos match} x #{matchGoalsAway match}
 
                         <td class="align-middle">
                             #{show $ matchBestPlayer match}
