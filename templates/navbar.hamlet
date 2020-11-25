@@ -12,7 +12,7 @@
                     <a class="nav-link" href=@{PlayersR}>
                         Jogadores
                 <li class="nav-item disabled">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href=@{MatchesR}>
                         Partidas
 
         $maybe email <- sess

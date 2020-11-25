@@ -1,24 +1,41 @@
+User
+    nome            Text
+    email           Text
+    senha           Text
+    UniqueEmail     email
+    deriving        Show
+
+Player
+    name            Text
+    year            Day
+    position        Text
+    number          Int
+    description     Text
+    deriving        Show
+
+Match
+    rival           Text
+    league          Text
+    date            Day
+    description     Text
+    goalsHome       Int
+    goalsAway       Int
+    bestPlayer      PlayerId
+    deriving        Show
+
+PlayerMatch
+    playerId        PlayerId
+    matchId         MatchId
+
+
+
+
 Produto
     nome     Text
     preco    Double 
-    deriving Show
-
-User
-    nome Text
-    email Text
-    senha Text
-    UniqueEmail email
     deriving Show
 
 Compra
     userid UserId
     produtoid ProdutoId
     qtunit    Int
-
-Player
-    name                Text
-    year                Day
-    position            Text
-    number              Int
-    description         Text
-    deriving            Show

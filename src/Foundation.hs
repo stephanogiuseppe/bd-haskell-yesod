@@ -26,12 +26,14 @@ instance Yesod App where
 
     authRoute _ = Just EntrarR
 
-    isAuthorized (StaticR _) _ = return Authorized
-    isAuthorized HomeR _ = return Authorized
-    isAuthorized EntrarR _ = return Authorized
-    isAuthorized UserR _ = return Authorized
-    isAuthorized AdminR _ = isAdmin
-    isAuthorized _ _ = isUser
+    isAuthorized (StaticR _) _  = return Authorized
+    isAuthorized HomeR _        = return Authorized
+    isAuthorized EntrarR _      = return Authorized
+    isAuthorized UserR _        = return Authorized
+    isAuthorized MatchesR _     = return Authorized
+    isAuthorized PlayersR _     = return Authorized
+    isAuthorized AdminR _       = isAdmin
+    isAuthorized _ _            = isUser
 
 isAdmin :: Handler AuthResult
 isAdmin = do 
