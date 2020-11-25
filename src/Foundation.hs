@@ -31,7 +31,9 @@ instance Yesod App where
     isAuthorized EntrarR _      = return Authorized
     isAuthorized UserR _        = return Authorized
     isAuthorized MatchesR _     = return Authorized
+    isAuthorized MatchDescR _   = return Authorized
     isAuthorized PlayersR _     = return Authorized
+    isAuthorized PlayerDescR _  = return Authorized
     isAuthorized AdminR _       = isAdmin
     isAuthorized _ _            = isUser
 
