@@ -78,13 +78,14 @@ getPlayerDescR pid = do
         $(whamletFile "templates/navbar.hamlet")
         [whamlet|
             <main>
-                <div class="santos-title">
-                    <div>
-                        <h1>
-                            Nome: #{playerName player}
+                <div>
+                    <div class="mt-3">
                         <h2>
+                            Nome: #{playerName player}
+                        <div>
                             Posição: #{playerPosition player}
-                
+                        <div>
+                            Detalhes do jogador: #{playerDescription player}
                 <div>
                     <a href=@{PlayersR} class="btn btn-info mt-3">
                         Voltar
