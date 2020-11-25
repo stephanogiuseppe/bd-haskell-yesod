@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 53a13aa8113787738c7bd7c4df4a74cfc9681b471133dee0a29bc4bee463ae82
+-- hash: 22fa2b710141f8925099160be1d93d06f3222bb78fe692e7dd9d7be6f2932980
 
 name:           matchdayfcsantos
 version:        0.0.0
@@ -25,14 +25,12 @@ library
       Application
       Foundation
       Handler.Common
-      Handler.Compra
       Handler.Home
       Handler.Match.Match
       Handler.Match.Matches
       Handler.Player.Player
       Handler.Player.PlayerFile
       Handler.Player.Players
-      Handler.Produto
       Handler.User.Login
       Handler.User.User
       Import

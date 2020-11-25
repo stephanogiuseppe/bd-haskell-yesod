@@ -57,79 +57,11 @@ formMatch match = renderBootstrap $ Match
     <*> aopt intField "Gols do rival: " (matchGoalsAway <$> match)
     <*> aopt (selectField getAllPlayers) "Melhor Jogador do Santos: " (matchBestPlayer <$> match)
 
-
-
-
-
-
-
+-- Aux
 getAllPlayers = do
     rows <- runDB $ selectList [] [Asc PlayerName]
     optionsPairs $
         map (\r -> (playerName $ entityVal r, entityKey r)) rows
-
-getAllMatches = do
-    rows <- runDB $ selectList [] [Asc MatchRival]
-    optionsPairs $
-        map (\r -> (matchRival $ entityVal r, entityKey r)) rows
-
--- renderDivs
-formPlayerMatch :: Form PlayerMatch 
-formPlayerMatch = renderBootstrap $ PlayerMatch
-    <$> areq (selectField getAllPlayers) "Jogador: " Nothing
-    <*> areq (selectField getAllMatches) "Partida: " Nothing
-
-getPlayerMatchR :: Handler Html
-getPlayerMatchR = do 
-    (widget,_) <- generateFormPost formPlayerMatch
-    msg <- getMessage
-    defaultLayout $ 
-        [whamlet|
-            $maybe mensa <- msg 
-                <div>
-                    ^{mensa}
-            
-            <h1>
-                Cadastro de jogadores em partidas
-            
-            <form method=post action=@{PlayerMatchR}>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
-        |]
-
-postPlayerMatchR :: Handler Html
-postPlayerMatchR = do 
-    ((result,_),_) <- runFormPost formPlayerMatch
-    case result of 
-        FormSuccess playerMatch -> do 
-            runDB $ insert playerMatch 
-            setMessage [shamlet|
-                <div>
-                    Jogador incluído
-            |]
-            redirect PlayerMatchR
-        _ -> redirect HomeR
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 -- Edit Match
 getMatchEditR :: MatchId -> Handler Html
@@ -159,7 +91,7 @@ getMatchDescR pid = do
             <main>
                 <div class="santos-title">
                     <div>
-                        <h1>
+                        <h2>
                             Rival: #{matchRival match} - Data: #{show $ matchDate match}
                         <div>
                             $maybe goalsSantos <- matchGoalsSantos match

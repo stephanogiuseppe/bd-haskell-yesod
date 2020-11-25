@@ -4,19 +4,11 @@
 /robots.txt RobotsR GET
 
 /                               HomeR               GET 
-/produto                        ProdutoR            GET     POST
-/produto/#ProdutoId/descricao   DescR               GET
-/produtos                       ListaR              GET
-/produto/#ProdutoId/modificar   UpdateProdutoR      GET     POST
-/produto/#ProdutoId/delelete    DeleteProdutoR              POST
 
 /usuario                        UserR               GET     POST
 /entrar                         EntrarR             GET     POST
 /sair                           SairR                       POST
 /admin                          AdminR              GET
-
-/comprar/lista                  ListCompraR         GET
-/comprar/#ProdutoId/efetuar     CompraR                     POST
 
 /jogador                        PlayerR             GET     POST
 /jogadores                      PlayersR            GET
@@ -31,8 +23,3 @@
 /partidas/#MatchId/descricao    MatchDescR          GET
 /partidas/#MatchId/modificar    MatchEditR          GET     POST
 /partidas/#MatchId/delete       MatchDeleteR                POST
-
-
-
-
-/joga             PlayerMatchR    GET POST

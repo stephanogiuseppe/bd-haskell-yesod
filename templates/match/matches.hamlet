@@ -5,7 +5,7 @@
 
     <div class="mb-3 float-right">
         <a href=@{MatchR} class="btn btn-info">
-            + Criar partida
+            + Cadastrar partida
         
     <div>
         <table class="table table-striped">
@@ -22,7 +22,7 @@
                     <th>
                         Resultado
                     <th>
-                        Melhor Jogador do Santos
+                        Melhor Jogador
                     <th>
                     <th>
             <tbody>

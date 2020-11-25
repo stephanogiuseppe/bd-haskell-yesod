@@ -28,9 +28,4 @@ getHomeR = do
                         
                         <h2>
                             Match Day
-                <section>
-                    <aside>
-                        Jogadores
-                    <aside>
-                        Partidas
         |]

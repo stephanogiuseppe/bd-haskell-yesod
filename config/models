@@ -23,20 +23,3 @@ Match
     goalsAway       Int         Maybe default=0
     bestPlayer      PlayerId    Maybe
     deriving        Show
-
-PlayerMatch
-    playerId        PlayerId
-    matchId         MatchId
-
-
-
-
-Produto
-    nome     Text
-    preco    Double 
-    deriving Show
-
-Compra
-    userid UserId
-    produtoid ProdutoId
-    qtunit    Int

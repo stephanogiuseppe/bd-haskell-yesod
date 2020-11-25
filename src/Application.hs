@@ -37,9 +37,7 @@ import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
 -- Import all relevant handler modules here.
 -- Don't forget to add new modules to your cabal file!
 import Handler.Common
-import Handler.Compra
 import Handler.Home
-import Handler.Produto
 
 import Handler.User.Login
 import Handler.User.User
