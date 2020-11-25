@@ -18,10 +18,10 @@ Match
     league          Text
     date            Day
     place           Text
-    description     Text
-    goalsSantos     Int
-    goalsAway       Int
-    bestPlayer      PlayerId
+    description     Textarea    Maybe default=''
+    goalsSantos     Int         Maybe default=0
+    goalsAway       Int         Maybe default=0
+    bestPlayer      PlayerId    Maybe
     deriving        Show
 
 PlayerMatch

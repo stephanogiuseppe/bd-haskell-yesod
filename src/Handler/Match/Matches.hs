@@ -7,6 +7,7 @@
 module Handler.Match.Matches where
 
 import Import
+import Database.Persist.Sql (fromSqlKey)
 
 getMatchesR :: Handler Html
 getMatchesR = do

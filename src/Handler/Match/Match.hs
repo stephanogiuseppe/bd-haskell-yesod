@@ -52,11 +52,10 @@ formMatch match = renderBootstrap $ Match
     <*> areq textField "Campeonato: " (fmap matchLeague match)
     <*> areq dayField "Data do jogo: " (fmap matchDate match)
     <*> areq textField "Local da partida: " (fmap matchPlace match)
-    <*> aopt textField "Descrição: " (fmap matchDescription match)
-    <*> aopt intField "Gols do Santos: " (fmap matchGoalsSantos match)
-    <*> aopt intField "Gols do rival: " (fmap matchGoalsAway match)
-    <*> aopt (selectField getAllPlayers) "Melhor Jogador: " (fmap matchBestPlayer match)
-
+    <*> aopt textareaField "Descrição: " (matchDescription <$> match)
+    <*> aopt intField "Gols do Santos: " (matchGoalsSantos <$> match)
+    <*> aopt intField "Gols do rival: " (matchGoalsAway <$> match)
+    <*> aopt (selectField getAllPlayers) "Melhor Jogador do Santos: " (matchBestPlayer <$> match)
 
 
 
@@ -163,9 +162,14 @@ getMatchDescR pid = do
                         <h1>
                             Rival: #{matchRival match} - Data: #{show $ matchDate match}
                         <div>
-                            Gols do Santos Futebol Clube: #{matchGoalsAway match}
+                            $maybe goalsSantos <- matchGoalsSantos match
+                                Gols do Santos Futebol Clube: #{goalsSantos}
                         <div>
-                            Gols do #{matchRival match}: #{matchGoalsAway match}
+                            $maybe goalsAway <- matchGoalsAway match
+                                Gols do #{matchRival match}: #{goalsAway}
+                        <div>
+                            $maybe description <- matchDescription match
+                                Detalhes da partida: #{description}
 
                 <div>
                     <a href=@{MatchesR} class="btn btn-info mt-3">

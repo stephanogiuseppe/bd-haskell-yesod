@@ -22,7 +22,7 @@
                     <th>
                         Resultado
                     <th>
-                        Melhor Jogador
+                        Melhor Jogador do Santos
                     <th>
                     <th>
             <tbody>
@@ -42,10 +42,17 @@
                             #{matchPlace match}
 
                         <td class="align-middle">
-                            #{matchGoalsSantos match} x #{matchGoalsAway match}
+                            $maybe goalsSantos <- matchGoalsSantos match
+                                $maybe goalsAway <- matchGoalsAway match
+                                    #{goalsSantos} x #{goalsAway}
+                            $nothing
+                                Partida não finalizada
 
                         <td class="align-middle">
-                            #{show $ matchBestPlayer match}
+                            $maybe bestPlayer <- matchBestPlayer match
+                                #{show $ fromSqlKey $ bestPlayer}
+                            $nothing
+                                -
 
                         <td class="icon-action">
                             <form action=@{MatchEditR pid} method=get>
